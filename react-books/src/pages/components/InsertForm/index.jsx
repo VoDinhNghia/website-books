@@ -1,5 +1,5 @@
-import service from '../../../model/service'
 import React from 'react';
+import service from '../../../model/service'
 
 class InsertForm extends React.Component {
     constructor(props) {
@@ -25,16 +25,17 @@ class InsertForm extends React.Component {
     }
 
     render() {
+        const { title = '', author = '' } = this.state
         return <form onSubmit={this.onSubmit}>
             <div>
                 <label>Title</label>
-                <input type="title" value={this.state.title}
+                <input type="title" value={title}
                     onChange={se => { this.setState({ title: se.target.value }) }} />
             </div>
 
             <div>
                 <label>Author</label>
-                <input type="author" value={this.state.author}
+                <input type="author" value={author}
                     onChange={se => { this.setState({ author: se.target.value }) }} />
             </div>
 

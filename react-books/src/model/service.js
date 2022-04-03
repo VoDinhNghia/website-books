@@ -1,26 +1,20 @@
-import request from 'superagent';
+const request = require('superagent')
 const urlApi = require('../config/config-react').urlApi;
 const path = (path) => {
-    return urlApi.join(path)
+    return `${urlApi}/${path}`
 }
 
 const fetchDataBooks = async() => {
-    let data = [];
-    request.get(path('/get-books')).then(msg => {
-        data = msg.body
-    })
-    return data
+    const data = await request.get(path('get-books'))
+    return data.body
 }
 
 const insertDataBooks = async(title, author) => {
-    let data = [];
-    request.get(path(`/save/${title}/${author}`)).then(msg => {
-        data = msg.body
-    })
-    return data
+    const data = await request.get(path(`save/${title}/${author}`))
+    return data.body
 }
 
-module.exports = {
+export default {
     fetchDataBooks,
     insertDataBooks
 }

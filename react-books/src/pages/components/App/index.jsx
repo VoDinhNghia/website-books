@@ -1,6 +1,7 @@
-import service from '../../../model/service'
 import React from 'react';
 import InsertForm from '../InsertForm'
+import service from '../../../model/service'
+
 
 class App extends React.Component {
     constructor(props) {
@@ -10,9 +11,10 @@ class App extends React.Component {
         };
         this.reloadData = this.reloadData.bind(this);
     }
-    reloadData() {
-        const data = service.fetchDataBooks()
-        this.setState({ data: msg.body });
+    reloadData = async () => {
+        await service.fetchDataBooks().then(result => {
+            this.setState({ data: result });
+        })
     }
 
     componentDidMount() {
@@ -20,6 +22,8 @@ class App extends React.Component {
     }
 
     render() {
+        const { data = [] } = this.state
+        console.log('data', data)
         return <div style={{ margin: '20px' }}>
 
             <div >
@@ -27,7 +31,7 @@ class App extends React.Component {
                 <h2>Books list</h2>
 
                 <ul> {/* Itero tutti i libri ricevuti dal server e genero dei <li /> */}
-                    {this.state.data.map(book => {
+                    {data?.map((book) => {
                         return <li>{book.title} ({book.author})</li>
                     })}
                 </ul>
