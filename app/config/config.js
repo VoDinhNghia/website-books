@@ -32,10 +32,10 @@ const connection = require('knex')({
 });
 
 const configKeySecret = {
-    accessTokenSecret: "access-secret-manage-books-vodinhnghia95-green-cats-and-dogs-a@",
+    accessTokenSecret: "**********-manage-books-**********-green-cats-and-dogs-a@",
     accessTokenLife: "24h",
     refreshTokenLife: "3650d",
-    refreshTokenSecret: "refresh-token-secret-manage-books-vodinhnghia95-green-cat2-dogs-a@1"
+    refreshTokenSecret: "**********-manage-books-***********-green-cat2-dogs-a@1"
 }
 
 module.exports = {
